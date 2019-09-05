@@ -1,5 +1,3 @@
-package model;
-
 public class Materie {
     String nume;
     String prescurtare;

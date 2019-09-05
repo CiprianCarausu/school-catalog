@@ -1,4 +1,4 @@
-import model.Profesor;
+package model;
 
 public class Materie {
     String nume;

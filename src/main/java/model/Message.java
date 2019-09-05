@@ -10,10 +10,10 @@ Eve, Geta, Andrei
 import java.util.Date;
 
 public class Message{
-    //private Student student = new Student();
+    private Student student = new Student();
     private Date time ;
     private String message = "";
-    //private Group group = new Group();
+    private Group group;
 
     public Message(Date time, String message) {
         this.time = time;

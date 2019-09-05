@@ -1,0 +1,26 @@
+Index: src/main/java/Materie.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package PACKAGE_NAME;\n\npublic class Materie {\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/Materie.java	(date 1567700223000)
++++ src/main/java/Materie.java	(revision )
+@@ -1,4 +1,14 @@
+-package PACKAGE_NAME;
+-
+ public class Materie {
++    String nume;
++    String prescurtare;
++    String detalii;
++    Profesor profesori;
++
++    public Materie(String nume, String prescurtare, String detalii, Profesor profesori){
++        this.nume = nume;
++        this.prescurtare = prescurtare;
++        this.detalii = detalii;
++        this.profesori = profesori;
++
++    }
+ }

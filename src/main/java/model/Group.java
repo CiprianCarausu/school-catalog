@@ -27,11 +27,4 @@ public class Group {
         return year;
     }
 
-    public void setIdGroup(int idGroup) {
-        this.idGroup = idGroup;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
 }

@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="java_firstapp_maven" target="1.5" />
+      <module name="java_firtsapp_maven" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

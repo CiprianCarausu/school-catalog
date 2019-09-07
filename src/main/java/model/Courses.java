@@ -1,16 +1,29 @@
 package model;
 
 public class Courses {
-    String nume;
-    String prescurtare;
-    String detalii;
-    Profesor profesori;
 
-    public Courses(String nume, String prescurtare, String detalii, Profesor profesori){
-        this.nume = nume;
-        this.prescurtare = prescurtare;
-        this.detalii = detalii;
-        this.profesori = profesori;
+    private String name;
+    private String shortcut;
+    private String details;
+    private String teachers;
 
+    public Courses(String nume, String shortcut, String details, String teachers){
+        this.name = name;
+        this.shortcut = shortcut;
+        this.details = details;
+        this.teachers = teachers;
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getShortcut() {
+        return shortcut;
+    }
+
+    public String getDetails() {
+        return details;
     }
 }

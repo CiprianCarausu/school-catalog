@@ -7,25 +7,38 @@ Grupa - obligatoriu, grupa unde a fost transmis mesajul
 Eve, Geta, Andrei
         */
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Message{
-    private Student student = new Student();
-    private Date time ;
-    private String message = "";
-    private Group group;
+    private String student;
+    private LocalDateTime dateTime ;
+    private String message;
+    private int group;
 
-    public Message(Date time, String message) {
-        this.time = time;
+    public Message(String student, LocalDateTime dateTime, String message, int group) {
+        this.student = student;
+        this.dateTime = dateTime;
         this.message = message;
+        this.group = group;
+        validate();
     }
 
-    public Date getTime() {
-        return time;
+    public String getStudent() {
+        return student;
     }
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setStudent(String student) {
+        this.student = student;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public String getMessage() {
@@ -34,6 +47,40 @@ public class Message{
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public int getGroup() {
+        return group;
+    }
+
+    public void setGroup(int group) {
+        this.group = group;
+    }
+
+    private boolean messageHasContent(String text) {
+        String EMPTY_STRING = "";
+        return (text != null) && (!text.trim().equals(EMPTY_STRING));
+    }
+    private void validate() throws Exception {
+        List<String> errors = new ArrayList<>();
+        if (messageHasContent(student)) {
+            errors.add("Student must have content.");
+        }
+        if (dateTime == null){
+            errors.add("DateTime cannot be null.");
+        }
+        if (messageHasContent(message)) {
+            errors.add("Message must have content.");
+        }
+
+        //group
+        if  (!errors.isEmpty()) {
+            Exception ex = new Exception("Errors found in constructing a Message.");
+            for (String error : errors) {
+                ex.addSuppressed(new Exception(error));
+            }
+            throw ex;
+        }
     }
 
 }

@@ -1,10 +1,10 @@
 package model;
 
-public class Group {
+    public class Group {
     private int idGroup;     //- numeric,obligatoriu intre 1 si 10.
     private int year;        //obligatoriu intre 1 si 6. Reprezinta anul din care face parte grupa.
-    Student student;        //studenti - lista de studenti
-    Message message;        //mesaje //- lista de mesaje asociate grupei
+    private Student student;        //studenti - lista de studenti
+    private Message message;        //mesaje //- lista de mesaje asociate grupei
 
     public Group(int idGroup, int year, Student student, Message message) {
 

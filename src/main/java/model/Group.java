@@ -29,4 +29,11 @@ public class Group {
         return year;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public Message getMessage() {
+        return message;
+    }
 }

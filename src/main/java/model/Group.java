@@ -1,39 +1,55 @@
 package model;
 
-    public class Group {
-    private int idGroup;     //- numeric,obligatoriu intre 1 si 10.
-    private int year;        //obligatoriu intre 1 si 6. Reprezinta anul din care face parte grupa.
-    private Student student;        //studenti - lista de studenti
-    private Message message;        //mesaje //- lista de mesaje asociate grupei
+import java.util.List;
 
-    public Group(int idGroup, int year, Student student, Message message) {
+public class Group {
+    private int idGroup;                   //- numeric,obligatoriu intre 1 si 10.
+    private int year;                      //obligatoriu intre 1 si 6. Reprezinta anul din care face parte grupa.
+    private List<Student> students;        //studenti - lista de studenti
+    private List<Message> messages;        //mesaje //- lista de mesaje asociate grupei
 
+    public Group(int idGroup, int year, List<Student> students, List<Message> messages) {
         if(idGroup < 1 || idGroup > 10){
-            throw new IllegalArgumentException("The group is doesn't exist.");
+            throw new IllegalArgumentException("The group doesn't exist.");
         }
         if(year < 1 || year > 6){
             throw new IllegalArgumentException("Year not in range 1-6.");
         }
-
         this.idGroup = idGroup;
         this.year = year;
-        this.student = student;
-        this.message = message;
+        this.students = students;
+        this.messages = messages;
     }
 
     public int getIdGroup() {
         return idGroup;
     }
 
+    public void setIdGroup(int idGroup) {
+        this.idGroup = idGroup;
+    }
+
     public int getYear() {
         return year;
     }
 
-    public Student getStudent() {
-        return student;
+    public void setYear(int year) {
+        this.year = year;
     }
 
-    public Message getMessage() {
-        return message;
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 }

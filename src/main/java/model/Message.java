@@ -61,19 +61,26 @@ public class Message{
         String EMPTY_STRING = "";
         return (text != null) && (!text.trim().equals(EMPTY_STRING));
     }
+
+    private boolean groupValidation(int group){
+        return (group >= 1) && ( group <= 10);
+    }
     private void validate() throws Exception {
         List<String> errors = new ArrayList<>();
-        if (messageHasContent(student)) {
+        if (!messageHasContent(student)) {
             errors.add("Student must have content.");
         }
+        if (!groupValidation(group)) {
+            errors.add("Student must have group from 1 to 10.");
+        }
+
         if (dateTime == null){
             errors.add("DateTime cannot be null.");
         }
-        if (messageHasContent(message)) {
+        if (!messageHasContent(message)) {
             errors.add("Message must have content.");
         }
 
-        //group
         if  (!errors.isEmpty()) {
             Exception ex = new Exception("Errors found in constructing a Message.");
             for (String error : errors) {

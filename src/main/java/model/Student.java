@@ -11,7 +11,7 @@ import java.util.Date;
 
 public class Student {
     //Student - Olimpia, Ariana, Simona
-}
+
     private String firstName;
     private String lastName;
     private String eMail;

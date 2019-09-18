@@ -9,10 +9,10 @@ public class Group {
     private List<Message> messages; //mesaje //- lista de mesaje asociate grupei
 
     public Group(int idGroup, int year, List<Student> students, List<Message> messages) {
-        checkForIdGroupRange();
-        checkForYearRange();
-        this.idGroup = idGroup;
-        this.year = year;
+
+
+        this.idGroup = checkForIdGroupRange(idGroup);
+        this.year = checkForYearRange(year);
         this.students = students;
         this.messages = messages;
     }
@@ -47,16 +47,20 @@ public class Group {
     }
 
 
-    private void checkForIdGroupRange() {
-        if(this.idGroup < 1 || this.idGroup > 10){
+    private int checkForIdGroupRange(int idGroup) {
+        if(idGroup < 1 || idGroup > 10){
             throw new IllegalArgumentException("The group doesn't exist.");
+        }else{
+            return idGroup;
         }
 
     }
-    private void checkForYearRange() {
+    private int checkForYearRange(int year) {
 
         if(year < 1 || year > 6){
             throw new IllegalArgumentException("Year not in range 1-6.");
+        }else{
+            return year;
         }
     }
 

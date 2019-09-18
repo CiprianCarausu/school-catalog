@@ -12,26 +12,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Message{
-    private String student;
+    private Student student;
     private LocalDateTime dateTime ;
     private String message;
-    private int group;
+    private Group idGroup;
 
-    public Message(String student, LocalDateTime dateTime, String message, int group) {
-        this.student = student;
+    public Message(Student student, LocalDateTime dateTime, String message, Group group) throws Exception {
+        //this.student = student;
         this.dateTime = dateTime;
         this.message = message;
-        this.group = group;
+        //this.group = idGroup;
         validate();
     }
 
-    public String getStudent() {
-        return student;
-    }
 
-    public void setStudent(String student) {
-        this.student = student;
-    }
 
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -49,13 +43,6 @@ public class Message{
         this.message = message;
     }
 
-    public int getGroup() {
-        return group;
-    }
-
-    public void setGroup(int group) {
-        this.group = group;
-    }
 
     private boolean messageHasContent(String text) {
         String EMPTY_STRING = "";
@@ -67,12 +54,12 @@ public class Message{
     }
     private void validate() throws Exception {
         List<String> errors = new ArrayList<>();
-        if (!messageHasContent(student)) {
+         /*if (!messageHasContent(Student.get(firstName))) {
             errors.add("Student must have content.");
-        }
-        if (!groupValidation(group)) {
-            errors.add("Student must have group from 1 to 10.");
-        }
+         }
+         if (!groupValidation(group)) {
+             errors.add("Student must have group from 1 to 10.");
+         }*/
 
         if (dateTime == null){
             errors.add("DateTime cannot be null.");

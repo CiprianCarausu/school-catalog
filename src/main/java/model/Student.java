@@ -28,27 +28,21 @@ public class Student {
     public String getFirstName() {
         return firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public String getEmail() {
         return eMail;
     }
-
     public Date getBirthDate() {
         return birthDate;
     }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public int getGroup() {
         return group;
     }
-
     public void setFirstName(String firstName) {
         if (firstName != null && !"".equals(firstName)) {
             this.firstName = firstName;

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Message{
     private Student student;
-    private LocalDateTime dateTime ;
+    private LocalDateTime dateTime;
     private String message;
     private Group idGroup;
 
@@ -16,8 +16,6 @@ public class Message{
         //this.group = idGroup;
         validate();
     }
-
-
 
     public LocalDateTime getDateTime() {
         return dateTime;
@@ -68,5 +66,4 @@ public class Message{
             throw ex;
         }
     }
-
 }

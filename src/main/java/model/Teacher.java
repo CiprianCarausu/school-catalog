@@ -1,6 +1,6 @@
 package model;
 
-public class Profesor {
+public class Teacher {
     private String lastName;
     private String firstName;
     private String email;

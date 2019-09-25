@@ -4,9 +4,9 @@ public class Courses {
     String name;
     String abbreviation;
     String details;
-    Profesor teachers;
+    Teacher teachers;
 
-    public Courses(String name, String abbreviation, String details, Profesor teachers){
+    public Courses(String name, String abbreviation, String details, Teacher teachers){
         this.name = name;
         this.abbreviation = abbreviation;
         this.details = details;

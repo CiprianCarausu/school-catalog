@@ -5,6 +5,7 @@ public class Location {
     private int capacity;
     private boolean available;
     private String address;
+
     public Location(String name, int capacity, boolean available, String address) {
         this.name = name;
         this.capacity = capacity;

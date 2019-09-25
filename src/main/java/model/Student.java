@@ -1,17 +1,7 @@
 package model;
-/*
-        Nume - text, obligatoriu *
-        Prenume - text, obligatoriu *
-        Email - text, obligatoriu, validare format si unicitate
-        Data_nasterii - data, obligatoriu *
-        Telefon - text, validare format
-        Grupa - numeric, intre 1 si 10. Reprezinta grupa din care face parte studentul
-*/
 import java.util.Date;
 
 public class Student {
-    //Student - Olimpia, Ariana, Simona
-
     private String firstName;
     private String lastName;
     private String eMail;
@@ -97,7 +87,6 @@ public class Student {
             System.out.println("ERROR. Invalid e-mail adress!");
         }
         return eMail;
-
     }
 
     public int checkGroup(int group) {
@@ -105,6 +94,5 @@ public class Student {
             System.out.println("Error: Invalid Group");
         }
         return group;
-
     }
 }

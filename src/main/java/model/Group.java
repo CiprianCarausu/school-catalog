@@ -3,14 +3,12 @@ package model;
 import java.util.List;
 
 public class Group {
-    private int idGroup;     //- numeric,obligatoriu intre 1 si 10.
-    private int year;        //obligatoriu intre 1 si 6. Reprezinta anul din care face parte grupa.
-    private List<Student> students; //studenti - lista de studenti
-    private List<Message> messages; //mesaje //- lista de mesaje asociate grupei
+    private int idGroup;
+    private int year;
+    private List<Student> students;
+    private List<Message> messages;
 
     public Group(int idGroup, int year, List<Student> students, List<Message> messages) {
-
-
         this.idGroup = checkForIdGroupRange(idGroup);
         this.year = checkForYearRange(year);
         this.students = students;
@@ -53,7 +51,6 @@ public class Group {
         }else{
             return idGroup;
         }
-
     }
     private int checkForYearRange(int year) {
 
@@ -63,6 +60,4 @@ public class Group {
             return year;
         }
     }
-
-
 }

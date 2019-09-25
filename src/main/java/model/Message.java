@@ -1,12 +1,4 @@
-package model;/*
-   Mesaj
-Student - obligatoriu, Studentul care a transmis mesajul
-Timp - data si timpul, obligatoriu. Timpul exact la care a fost transmis cu precizie cat mai mare (e.g. milisecunde). Precizia este necesara pentru ordonare cronologica.
-Text - text, obligatoriu. textul mesajului
-Grupa - obligatoriu, grupa unde a fost transmis mesajul
-Eve, Geta, Andrei
-        */
-
+package model;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

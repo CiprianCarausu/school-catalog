@@ -4,15 +4,15 @@ import java.util.Date;
 public class Student {
     private String firstName;
     private String lastName;
-    private String eMail;
+    private String email;
     private Date birthDate;
     private String phoneNumber;
     private int group;
 
-    public Student(String firstName, String lastName, String eMail, Date birthDate, String phoneNumber, int group) {
+    public Student(String firstName, String lastName, String email, Date birthDate, String phoneNumber, int group) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.eMail = checkEmail(eMail);
+        this.email = checkEmail(email);
         this.birthDate = birthDate;
         this.phoneNumber = checkPhone(phoneNumber);
         this.group = checkGroup(group);
@@ -32,7 +32,7 @@ public class Student {
         return lastName;
     }
     public String getEmail() {
-        return eMail;
+        return email;
     }
     public Date getBirthDate() {
         return birthDate;
@@ -58,7 +58,7 @@ public class Student {
 
     public void setEmail(String eMail) {
         if (eMail != null && !"".equals((eMail))) {
-            this.eMail = eMail;
+            this.email = eMail;
         }
     }
 
@@ -76,11 +76,11 @@ public class Student {
         this.group = group;
     }
 
-    public String checkEmail(String eMail) {
-        if (eMail != "[_a-zA-Z1-9]+(\\.[A-Za-z0-9]*)*@[A-Za-z0-9]+\\.[A-Za-z0-9]+(\\.[A-Za-z0-9]*)*") {
+    public String checkEmail(String email) {
+        if (email != "[_a-zA-Z1-9]+(\\.[A-Za-z0-9]*)*@[A-Za-z0-9]+\\.[A-Za-z0-9]+(\\.[A-Za-z0-9]*)*") {
             System.out.println("ERROR. Invalid e-mail adress!");
         }
-        return eMail;
+        return email;
     }
 
     public int checkGroup(int group) {

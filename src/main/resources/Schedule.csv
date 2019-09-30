@@ -1,0 +1,5 @@
+idGroup,teacher,location,date,startTime,endTime,courseDetails,courses
+1,Andrew,Hall,11/11/2005,11,12,Hard,Mathematics
+2,Crew,Class,11/12/2005,12,13,Easy,English
+3,Mahle,North,11/13/2005,13,14,Medium dif,Sport
+4,Gruss,West,11/14/2005,14,15,Easy,Chess

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Schedule {
     private Group idGroup;
-    private Teacher profesor;
+    private Teacher teacher;
     private Location location;
     private Date date;
     private String startTime;
@@ -12,9 +12,9 @@ public class Schedule {
     private String courseDetails;
     private Courses courses;
 
-    public Schedule(Group idGroup, Teacher profesor, Location location, Date date, String startTime, String endTime, String courseDetails, Courses courses) {
+    public Schedule(Group idGroup, Teacher teacher, Location location, Date date, String startTime, String endTime, String courseDetails, Courses courses) {
         this.idGroup = idGroup;
-        this.profesor = profesor;
+        this.teacher = teacher;
         this.location = location;
         this.date = date;
         this.startTime = startTime;
@@ -31,12 +31,12 @@ public class Schedule {
         this.idGroup = idGroup;
     }
 
-    public Teacher getProfesor() {
-        return profesor;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
-    public void setProfesor(Teacher profesor) {
-        this.profesor = profesor;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     public Location getLocation() {
@@ -91,7 +91,7 @@ public class Schedule {
     public String toString() {
         return "Schedule{" +
                 "idGroup=" + idGroup +
-                ", profesor=" + profesor +
+                ", teacher=" + teacher +
                 ", location=" + location +
                 ", date=" + date +
                 ", startTime='" + startTime + '\'' +

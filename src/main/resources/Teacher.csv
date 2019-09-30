@@ -1,0 +1,5 @@
+lastName,firstName,email,title,phoneNumber,yearOfEmployment,active
+Andrew,Raff,andrewraff@gmail.com,ASSOCIATEPROFESSOR,721321411,2000,TRUE
+Crew,Roll,crewroll@gmail.com,ASSOCIATEPROFESSOR,732321111,2001,TRUE
+Mahle,Tard,mahletard@gmail.com,PROFESSOR,769323111,2002,TRUE
+Gruss,Charmel,grusscharmel@gmail.com,PROFESSOR,732141231,2003,FALSE

@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class CSVReader {
 
     public static void main(String[] args) {
-        new CSVReader().readFile("Courses");
+        System.out.println( new CSVReader().readFile("Group"));
 
     }
 
@@ -30,5 +30,6 @@ public class CSVReader {
             lines.add(courseScanner.nextLine());
         }
         return lines;
+
     }
 }

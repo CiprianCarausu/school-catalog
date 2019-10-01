@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class CSVReader {
 
     public static void main(String[] args) {
-        System.out.println( new CSVReader().readFile("Group"));
+        System.out.println( new CSVReader().readFile("message"));
 
     }
 

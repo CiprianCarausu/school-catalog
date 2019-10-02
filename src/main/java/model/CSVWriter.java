@@ -1,21 +1,21 @@
 package model;
 
-import org.apache.commons.io.FileUtils;
+import com.sun.org.apache.xerces.internal.xs.StringList;
+import org.apache.logging.log4j.core.config.plugins.util.ResolverUtil;
 import org.json.CDL;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.*;
 
 
 public class CSVWriter {
 
-    public static void main(String[] args) {
-        messageGroupOrder();
+    public static void main(String[] args) throws IOException {
+        csvWriter("succes1");
     }
 
     public static void scheduleExport() {
@@ -34,7 +34,7 @@ public class CSVWriter {
         }
     }
 
-    public static void messageGroupOrder() {
+    public static Map<String, ArrayList<String>> messageGroupOrder() {
         List<String> lines = new CSVReader().readFile("message");
         Map<String, ArrayList<String>> map = new HashMap<>();
 
@@ -46,7 +46,6 @@ public class CSVWriter {
             String msg = columns[2];
             String idGroup = columns[3];
 
-
             //ensure idGroup is in the Map
             if (!map.containsKey(idGroup))
                 map.put(idGroup, new ArrayList<String>());
@@ -54,19 +53,49 @@ public class CSVWriter {
             //add to list at idGroup location
             map.get(idGroup).add(msg + " - " + date);
 
-
             Set<String> keys = map.keySet();
 
-         //   List<String> sample = new ArrayList<String>(){"key","message","date"};
+            //   List<String> sample = new ArrayList<String>(){"key","message","date"};
 
             for (String key : keys) {
                 for (String message : map.get(key)) {
-                    System.out.println(key + " - " + message );
+                    System.out.println(key + " - " + message);
                 }
             }
+
         }
+        return map;
     }
 
-   
+    public static void csvWriter(String group) throws IOException {
+
+        Map<String, ArrayList<String>> map = (messageGroupOrder());
+        FileWriter writer = new FileWriter(group);
+        writer.append(map.get("1").get(0));
+        writer.append(",");
+        writer.append(map.get("2").get(0));
+        writer.append(",");
+        writer.append(map.get("3").get(0)
+        );
+        writer.append("\n");
+
+        writer.flush();
+        writer.close();
+
+        Set<String> keys = map.keySet();
+
+        for (String key : keys) {
+            for (String message : map.get(key)) {
+                System.out.println(key + " - " + message);
+            }
+
+        }
+    }
+}
+
+
+
+
+
 
 

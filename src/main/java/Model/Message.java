@@ -1,28 +1,26 @@
-package model;
+package Model;
+
+import Util.DateTimeConverter;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class Message{
-    private Student student;
-    private LocalDateTime dateTime;
+public class Message implements Comparable {
+    private List<Student> students = new ArrayList<>();
+    private Date dateTime;
     private String message;
-    private Group idGroup;
+    private int groupId;
 
-    public Message(Student student, LocalDateTime dateTime, String message, Group group) throws Exception {
-        //this.student = student;
-        this.dateTime = dateTime;
-        this.message = message;
-        //this.group = idGroup;
-        validate();
+    public Message() {
     }
 
-    public LocalDateTime getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 
@@ -34,15 +32,23 @@ public class Message{
         this.message = message;
     }
 
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public int getGroupId() {
+        return groupId;
+    }
 
     private boolean messageHasContent(String text) {
         String EMPTY_STRING = "";
         return (text != null) && (!text.trim().equals(EMPTY_STRING));
     }
 
-    private boolean groupValidation(int group){
-        return (group >= 1) && ( group <= 10);
+    private boolean groupValidation(int group) {
+        return (group >= 1) && (group <= 10);
     }
+
     private void validate() throws Exception {
         List<String> errors = new ArrayList<>();
          /*if (!messageHasContent(Student.get(firstName))) {
@@ -52,19 +58,37 @@ public class Message{
              errors.add("Student must have group from 1 to 10.");
          }*/
 
-        if (dateTime == null){
+        if (dateTime == null) {
             errors.add("DateTime cannot be null.");
         }
         if (!messageHasContent(message)) {
             errors.add("Message must have content.");
         }
 
-        if  (!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             Exception ex = new Exception("Errors found in constructing a Message.");
             for (String error : errors) {
                 ex.addSuppressed(new Exception(error));
             }
             throw ex;
         }
+
+    }
+
+    public void loadDataFromCSVString(String line) {
+        String[] columns = line.split(",");
+        this.groupId = Integer.parseInt(columns[2]);
+        this.dateTime = DateTimeConverter.stringToDateAndTime(columns[0]);
+        this.message = columns[1];
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Message other = (Message) o;
+        return dateTime.compareTo(other.dateTime);
+    }
+
+    public String singeGroupFileSave() {
+        return dateTime + "," + message + "\n";
     }
 }

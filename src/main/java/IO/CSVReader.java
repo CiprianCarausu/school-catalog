@@ -1,6 +1,4 @@
-package model;
-
-import com.sun.media.sound.WaveExtensibleFileReader;
+package IO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -11,24 +9,18 @@ import java.util.Scanner;
 
 public class CSVReader {
 
-    public static void main(String[] args) {
-        System.out.println( new CSVReader().readFile("message"));
-
-    }
-
-
     public List<String> readFile(String fileName) {
         List<String> lines = new ArrayList<>();
         File courseFile = new File(this.getClass().getClassLoader().getResource(fileName + ".csv").getFile());
-        Scanner courseScanner = null;
         try {
-            courseScanner = new Scanner(courseFile);
+            Scanner courseScanner = new Scanner(courseFile);
+            while (courseScanner.hasNextLine()) {
+                lines.add(courseScanner.nextLine());
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        while (courseScanner.hasNextLine()) {
-            lines.add(courseScanner.nextLine());
-        }
+        lines.remove(0);
         return lines;
 
     }

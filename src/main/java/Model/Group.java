@@ -1,5 +1,10 @@
-package model;
+package Model;
 
+import IO.CSVWriter;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Group {
@@ -14,7 +19,15 @@ public class Group {
         this.students = students;
         this.messages = messages;
     }
+    public Group(){}
 
+    public void loadDataFromCSVString(String line){
+        String[] columns = line.split(",");
+        this.idGroup = Integer.parseInt(columns[0]);
+        this.year = Integer.parseInt(columns[1]);
+        this.students = new ArrayList<>();
+        this.messages = new ArrayList<>();
+    }
 
     public int getIdGroup() {
         return idGroup;
@@ -60,4 +73,26 @@ public class Group {
             return year;
         }
     }
+    public void addStudent(Student tempStudent) {
+        students.add(tempStudent);
+    }
+
+    public void addMessage(Message message){
+        messages.add(message);
+    }
+
+    public int countStudents() {
+        return students.size();
+    }
+
+    public void saveMessagesOnTimeOrder() {
+        Collections.sort(messages);
+        try {
+            new CSVWriter().writeMessagesToFile(idGroup, messages);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Something went wrong while creating a csv filewriter file!");
+        }
+    }
 }
+

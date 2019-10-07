@@ -1,6 +1,6 @@
-package model;
+package Model;
 
-public enum Titles {
+public enum Title {
     ASSISTANTPROFESSOR("Assistant Professor"),
     ASSOCIATEPROFESSOR("Associate Professor"),
     PROFESSOR("Professor");
@@ -8,7 +8,7 @@ public enum Titles {
 
     private final String val;
 
-    private Titles(String val) {
+    private Title(String val) {
         this.val = val;
     }
 

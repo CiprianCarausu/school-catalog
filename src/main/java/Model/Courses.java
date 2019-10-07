@@ -1,4 +1,4 @@
-package model;
+package Model;
 
 public class Courses {
    private String name;

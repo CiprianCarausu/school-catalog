@@ -1,7 +1,9 @@
-package model;
+package Model;
 
-import model.Titles;
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,15 +12,31 @@ public class Teacher{
     private String firstName;
 
     private String email;
-    private Titles title;
+    private Title title;
     private String phoneNumber;
     private int yearOfEmployment;
     private boolean active;
+    private static Map<Title, List<Teacher>> groupedByTeachers = new HashMap<>();
 
 
     public Teacher(String strTeachers) {
     }
+    public Teacher(){}
 
+    public void loadDataFromCSVString(String line){
+        String[] columns = line.split(",");
+        this.lastName = columns[0];
+        this.firstName = columns[1];
+        setEmail(columns[2]);
+        setTitle(Title.valueOf(columns[3]));
+        setPhoneNumber(columns[4]);
+        setYearOfEmployment(Integer.parseInt(columns[5]));
+    }
+
+    public void addMeToGroupedTeachers(){
+        groupedByTeachers.computeIfAbsent(title, k -> new ArrayList<>());
+        groupedByTeachers.get(title).add(this);
+    }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -39,7 +57,7 @@ public class Teacher{
 
     }
 
-    public void setTitle(Titles title) {
+    public void setTitle(Title title) {
         this.title = title;
     }
 
@@ -64,6 +82,10 @@ public class Teacher{
         this.active = active;
     }
 
+    public String getLastName(){
+        return lastName;
+    }
+
     @Override
     public String toString() {
         return "Profesor{" +
@@ -75,5 +97,9 @@ public class Teacher{
                 ", yearOfEmployment=" + yearOfEmployment +
                 ", active=" + active +
                 '}';
+    }
+
+    public boolean hiredPast2000() {
+        return yearOfEmployment > 2000;
     }
 }

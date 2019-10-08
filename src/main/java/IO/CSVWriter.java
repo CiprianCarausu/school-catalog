@@ -1,7 +1,8 @@
-package model;
+package IO;
 
-import com.sun.org.apache.xerces.internal.xs.StringList;
-import org.apache.logging.log4j.core.config.plugins.util.ResolverUtil;
+import Model.Message;
+import Model.Location;
+import Model.Message;
 import org.json.CDL;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -14,10 +15,50 @@ import java.util.*;
 
 public class CSVWriter {
 
-    public static void main(String[] args) throws IOException {
-        csvWriter("succes1");
+    FileWriter writer;
+
+    public void writeMessagesToFile(int idGroup, List<Message> messages) throws IOException{
+        String fileName = "MessageFromGroup"+idGroup;
+        writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven"+fileName);
+        writer.append("dateAndTime, message\n");
+        for(Message message: messages){
+            writer.append(message.singeGroupFileSave());
+        }
+        writeWriter();
     }
 
+    public void writeAvailableLocations(List<Location> availables) throws IOException{
+        String fileName = "AvailableLocations";
+        writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven"+fileName);
+        writer.append("name,capacity,available,adress\n");
+        for(Location loc: availables){
+            writer.append(loc.toCSVFileSave());
+        }
+        writeWriter();
+    }
+
+    private void writeWriter(){
+        try {
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Something went wrong while writing!");
+        }
+
+    }
+
+   public static void main(String[] args) throws IOException {
+      //  CSVWriter a = new CSVWriter();
+       /*List<Message> messages = new ArrayList<>();
+       Message message = new Message();
+       messages.add(message.loadDataFromCSVString("2005-12-12 at 14:45.20.1432,Hi,3"));
+       messages.add(message.loadDataFromCSVString("2005-12-12 at 14:55.20.1432,Hi Hi,3"));
+       messages.add(message.loadDataFromCSVString("2005-12-13 at 15:45.20.1432,Hi world,4"));
+       new CSVWriter().writeMessagesToFile(5, messages);*/
+
+    }
+///new ArrayList<>(new Message().singeGroupFileSave()))
     public static void scheduleExport() {
         String jsonArrayString = "{\"oneWeekSchedule\": [{\"idGroup\": \"1\",\"teacher\": \"Andrew\",\"location\": \"Hall\",\"date\": \"11/11/2005\",\"startTime\": \"11\",\"endTime\": \"12\",\"courseDetails\": \"Easy\",\"courses\": \"English\" }]}";
         String jsonArrayNamesString = "[\"idGroup\",\"teacher\",\"location\",\"date\",\"startTime\",\"endTime\",\"courseDetails\",\"courses\" ]";
@@ -88,7 +129,6 @@ public class CSVWriter {
             for (String message : map.get(key)) {
                 System.out.println(key + " - " + message);
             }
-
         }
     }
 }

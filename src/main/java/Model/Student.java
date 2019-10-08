@@ -49,6 +49,10 @@ public class Student {
         return phoneNumber;
     }
 
+    public int getstudentNumber() {
+        return studentNumber;
+    }
+
     public String getFirstName() {
         return firstName;
     }

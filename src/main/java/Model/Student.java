@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class Student {
+public class Student implements Comparable{
     private String firstName;
     private String lastName;
     private String email;
@@ -126,5 +126,17 @@ public class Student {
 
     public void addMessage(Message message){
         messages.add(message);
+    }
+
+    /*public void loadDataFromCSVString(String line) {
+        String[] columns = line.split(",");
+        this.firstName = columns[0];
+        this.birthDate = DateTimeConverter.stringToDateAndTime(columns[3]);
+    }*/
+
+    @Override
+    public int compareTo(Object o) {
+Student other = (Student) o;
+        return birthDate.compareTo(other.birthDate);
     }
 }

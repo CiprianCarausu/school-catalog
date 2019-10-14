@@ -1,5 +1,5 @@
 firstName,lastName,email,birthDate,phoneNumber,group
-Alex,Marchel,alexmarchel@gmail.com,12/10/1995,731238121,1 2 3 4
-Alexa,Roll,alexaroll@gmail.com,12/15/1994,735232121,1 2 3 4
-Juana,Jon,juanajon@gmail.com,11/11/1990,721231121,1 2 3 4
-Ronnye,John,roonyejohn@gmail.com,10/10/1994,715234121,1 2 3 4
+Alex,Marchel,alexmarchel@gmail.com,12/10/1995,731238121,1
+Alexa,Roll,alexaroll@gmail.com,12/15/1994,735232121,2
+Juana,Jon,juanajon@gmail.com,11/11/1990,721231121,3
+Ronnye,John,roonyejohn@gmail.com,10/10/1994,715234121,4

@@ -77,9 +77,9 @@ public class Message implements Comparable {
 
     public void loadDataFromCSVString(String line) {
         String[] columns = line.split(",");
-        this.groupId = Integer.parseInt(columns[2]);
-        this.dateTime = DateTimeConverter.stringToDateAndTime(columns[0]);
-        this.message = columns[1];
+        this.groupId = Integer.parseInt(columns[3]);
+        this.dateTime = DateTimeConverter.stringToDateAndTime(columns[1]);
+        this.message = columns[2];
     }
 
     @Override

@@ -19,7 +19,7 @@ public class CSVWriter {
 
     public void writeMessagesToFile(int idGroup, List<Message> messages) throws IOException{
         String fileName = "MessageFromGroup"+idGroup;
-        writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven"+fileName);
+        writer = new FileWriter("src/main/resources"+fileName);
         writer.append("dateAndTime, message\n");
         for(Message message: messages){
             writer.append(message.singeGroupFileSave());
@@ -48,17 +48,17 @@ public class CSVWriter {
 
     }
 
-   public static void main(String[] args) throws IOException {
-      //  CSVWriter a = new CSVWriter();
-       /*List<Message> messages = new ArrayList<>();
+    public static void main(String[] args) throws IOException {
+      /* List<Message> messages = new ArrayList<>();
        Message message = new Message();
-       messages.add(message.loadDataFromCSVString("2005-12-12 at 14:45.20.1432,Hi,3"));
-       messages.add(message.loadDataFromCSVString("2005-12-12 at 14:55.20.1432,Hi Hi,3"));
-       messages.add(message.loadDataFromCSVString("2005-12-13 at 15:45.20.1432,Hi world,4"));
-       new CSVWriter().writeMessagesToFile(5, messages);*/
+       message.loadDataFromCSVString("2005-12-13 at 15:45.20.1432,Hi world,4");
+       messages.add(message );
+       message.loadDataFromCSVString("2005-12-12 at 14:55.20.1432,Hi Hi,3");
+       messages.add(message);
+       new CSVWriter().writeMessagesToFile(4, messages);*/
 
     }
-///new ArrayList<>(new Message().singeGroupFileSave()))
+
     public static void scheduleExport() {
         String jsonArrayString = "{\"oneWeekSchedule\": [{\"idGroup\": \"1\",\"teacher\": \"Andrew\",\"location\": \"Hall\",\"date\": \"11/11/2005\",\"startTime\": \"11\",\"endTime\": \"12\",\"courseDetails\": \"Easy\",\"courses\": \"English\" }]}";
         String jsonArrayNamesString = "[\"idGroup\",\"teacher\",\"location\",\"date\",\"startTime\",\"endTime\",\"courseDetails\",\"courses\" ]";

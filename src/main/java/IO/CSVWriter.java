@@ -3,6 +3,7 @@ package IO;
 import Model.Message;
 import Model.Location;
 import Model.Message;
+import Model.Student;
 import org.json.CDL;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -29,10 +30,20 @@ public class CSVWriter {
 
     public void writeAvailableLocations(List<Location> availables) throws IOException{
         String fileName = "AvailableLocations";
-        writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven"+fileName);
+        writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
         writer.append("name,capacity,available,adress\n");
         for(Location loc: availables){
             writer.append(loc.toCSVFileSave());
+        }
+        writeWriter();
+    }
+
+    public void writeOrderedStudents(List<Student> students) throws IOException{
+        String fileName = "StudentsOrderedByBirthDate";
+        writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
+        writer.append("firstName + lastName+ email + birthDate + phoneNumber + groupId\n");
+        for(Student stu : students){
+            writer.append(stu.toCSVFileSave());
         }
         writeWriter();
     }

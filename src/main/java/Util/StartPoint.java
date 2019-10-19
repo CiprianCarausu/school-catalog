@@ -19,7 +19,12 @@ public class StartPoint {
         System.out.println("The number of teacher who got hired past 2000 is: " + school.teachersHiredPast2000());
 
         System.out.println("\n\nExercise 7");
+
+        school.invokeResortForStudentsByBirthdate();
+
+        System.out.println("Exercise ");
         school.loadLocations();
         school.saveLocationsAvailable();
+        school.saveSortedStudentsByBirthName();
     }
 }

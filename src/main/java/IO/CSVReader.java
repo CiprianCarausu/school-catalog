@@ -11,7 +11,7 @@ public class CSVReader {
 
     public List<String> readFile(String fileName) {
         List<String> lines = new ArrayList<>();
-        File courseFile = new File(this.getClass().getClassLoader().getResource(fileName + ".csv").getFile());
+        File courseFile = new File(this.getClass().getClassLoader().getResource("in/" + fileName + ".csv").getFile());
         try {
             Scanner courseScanner = new Scanner(courseFile);
             while (courseScanner.hasNextLine()) {

@@ -133,6 +133,10 @@ public class Student implements Comparable{
         this.firstName = columns[0];
         this.birthDate = DateTimeConverter.stringToDateAndTime(columns[3]);
     }*/
+    public String toCSVFileSave() {
+        return firstName + "," + lastName + "," + email + "," + birthDate + "," + phoneNumber+ "," + groupId+"\n";
+    }
+
 
     @Override
     public int compareTo(Object o) {

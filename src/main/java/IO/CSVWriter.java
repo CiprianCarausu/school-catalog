@@ -1,9 +1,7 @@
 package IO;
 
+import Model.*;
 import Model.Message;
-import Model.Location;
-import Model.Message;
-import Model.Student;
 import org.json.CDL;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -47,6 +45,37 @@ public class CSVWriter {
         }
         writeWriter();
     }
+
+    public void writerListGroupStudents(List<Group> students) throws IOException{
+        for(Group stu : students){
+            String fileName = "ListGroupStudents" + stu.getIdGroup();
+            writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
+            writer.append("idGroup + year + student\n");
+            writer.append(stu.toCSVFileSave());
+            writeWriter();
+        }
+
+    }
+
+
+
+   /* public void writeListGroupStudents(int idGroup, List<Group> students) throws IOException{
+        String fileName = "MessageFromGroup"+idGroup;
+        writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
+        writer.append("dateAndTime, message\n");
+        for(Group student: students){
+            writer.append(student.toCSVFileSave());
+        }
+        writeWriter();
+    }*/
+
+
+
+    private int idGroup;
+    private int year;
+    private List<Student> students;
+    private List<Message> messages;
+
 
     private void writeWriter(){
         try {

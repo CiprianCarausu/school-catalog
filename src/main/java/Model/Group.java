@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Group {
+public class Group implements Comparable {
     private int idGroup;
     private int year;
     private List<Student> students;
@@ -19,9 +19,11 @@ public class Group {
         this.students = students;
         this.messages = messages;
     }
-    public Group(){}
 
-    public void loadDataFromCSVString(String line){
+    public Group() {
+    }
+
+    public void loadDataFromCSVString(String line) {
         String[] columns = line.split(",");
         this.idGroup = Integer.parseInt(columns[0]);
         this.year = Integer.parseInt(columns[1]);
@@ -59,25 +61,27 @@ public class Group {
 
 
     private int checkForIdGroupRange(int idGroup) {
-        if(idGroup < 1 || idGroup > 10){
+        if (idGroup < 1 || idGroup > 10) {
             throw new IllegalArgumentException("The group doesn't exist.");
-        }else{
+        } else {
             return idGroup;
         }
     }
+
     private int checkForYearRange(int year) {
 
-        if(year < 1 || year > 6){
+        if (year < 1 || year > 6) {
             throw new IllegalArgumentException("Year not in range 1-6.");
-        }else{
+        } else {
             return year;
         }
     }
+
     public void addStudent(Student tempStudent) {
         students.add(tempStudent);
     }
 
-    public void addMessage(Message message){
+    public void addMessage(Message message) {
         messages.add(message);
     }
 
@@ -92,6 +96,25 @@ public class Group {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Something went wrong while creating a csv filewriter file!");
+        }
+}
+
+
+    public String toCSVFileSave() {
+        String text = "";
+        for (Student student:students ) {
+            text += idGroup + "," + year + "," + student.getFirstName() ;
+        }
+        return text;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Group other = (Group) o;
+        if (idGroup > ((Group) o).getIdGroup()) {
+            return 1;
+        } else {
+            return 0;
         }
     }
 }

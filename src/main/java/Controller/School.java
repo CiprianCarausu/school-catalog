@@ -12,8 +12,9 @@ public class School {
     Map<Integer, Group> groups = new HashMap<>();
     Map<Integer, Student> students = new HashMap<>();
 
-    List<Student> studentsList = new ArrayList<Student>();
-    List<Object> entities = new ArrayList<Object>();
+    List<Student> studentsList = new ArrayList<Student>();;
+
+    List<Group> groupStudentsList = new ArrayList<Group>();
 
     Map<Integer, Message> messages = new HashMap<>();
     Map<String, Teacher> teachers = new HashMap<>();
@@ -163,8 +164,28 @@ public class School {
         }
     }
 
+    public void saveListGroupStudents(){
+        List<Group> groupStudents = new ArrayList<>();
+        for(Group stu : groups.values()){
+            groupStudents.add(stu);
+        }
+        try {
+            new CSVWriter().writerListGroupStudents(groupStudents);
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+            System.out.println("Something when wrong while creating the writer!");
+        }
+    }
 
 
+
+
+
+/*10) Save a file for each group, with the list of all the students that are in the group.
+11) Save in a file all the professors that teaches multiple classes, the name of the classes as well
+12)Sort the location list by the number of capacity spaces.
+    from these*/
 
 
 

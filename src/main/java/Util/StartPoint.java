@@ -26,5 +26,8 @@ public class StartPoint {
         school.loadLocations();
         school.saveLocationsAvailable();
         school.saveSortedStudentsByBirthName();
+        school.saveListGroupStudents();
     }
 }
+
+    //Save a file for each group, with the list of all the students that are in the group.

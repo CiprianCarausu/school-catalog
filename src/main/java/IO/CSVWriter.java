@@ -29,7 +29,7 @@ public class CSVWriter {
     public void writeAvailableLocations(List<Location> availables) throws IOException{
         String fileName = "AvailableLocations";
         writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
-        writer.append("name,capacity,available,adress\n");
+        writer.append("name,capacity,available,address\n");
         for(Location loc: availables){
             writer.append(loc.toCSVFileSave());
         }
@@ -57,7 +57,15 @@ public class CSVWriter {
 
     }
 
-
+    public void writerOrderedLocationCapacity(List<Location> capacity) throws IOException{
+        String fileName = "OrderedByCapacity/LocationOrderedByCapacity";
+        writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
+        writer.append("name + capacity + available + address \n");
+        for(Location loc : capacity){
+            writer.append(loc.toCSVFileSave());
+        }
+        writeWriter();
+    }
 
    /* public void writeListGroupStudents(int idGroup, List<Group> students) throws IOException{
         String fileName = "MessageFromGroup"+idGroup;
@@ -70,11 +78,6 @@ public class CSVWriter {
     }*/
 
 
-
-    private int idGroup;
-    private int year;
-    private List<Student> students;
-    private List<Message> messages;
 
 
     private void writeWriter(){

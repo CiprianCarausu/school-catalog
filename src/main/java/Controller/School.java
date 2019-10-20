@@ -12,9 +12,9 @@ public class School {
     Map<Integer, Group> groups = new HashMap<>();
     Map<Integer, Student> students = new HashMap<>();
 
-    List<Student> studentsList = new ArrayList<Student>();;
-
+    List<Student> studentsList = new ArrayList<Student>();
     List<Group> groupStudentsList = new ArrayList<Group>();
+    List<Location> locationsList = new ArrayList<Location>();
 
     Map<Integer, Message> messages = new HashMap<>();
     Map<String, Teacher> teachers = new HashMap<>();
@@ -77,7 +77,7 @@ public class School {
     }
 
     public void invokeResortForStudentsByBirthdate() {
-       studentsList = new ArrayList<>(this.students.values());
+        studentsList = new ArrayList<>(this.students.values());
         Collections.sort(studentsList);
     }
 
@@ -149,7 +149,6 @@ public class School {
         }
     }
 
-
     public void saveSortedStudentsByBirthName() {
         List<Student> students = new ArrayList<>();
         for (Student stu : studentsList) {
@@ -157,16 +156,15 @@ public class School {
         }
         try {
             new CSVWriter().writeOrderedStudents(students);
-        } catch (
-                IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("Something when wrong while creating the writer!");
+            System.out.println("Something went wrong while creating the writer!");
         }
     }
 
-    public void saveListGroupStudents(){
+    public void saveListGroupStudents() {
         List<Group> groupStudents = new ArrayList<>();
-        for(Group stu : groups.values()){
+        for (Group stu : groups.values()) {
             groupStudents.add(stu);
         }
         try {
@@ -178,7 +176,26 @@ public class School {
         }
     }
 
+    public void saveSortedLocationCapacity() {
+        List<Location> capacity = new ArrayList<>();
+        for (Location cap : locations.values()) {
+            capacity.add(cap);
+           }
+        Collections.sort(capacity);
+        try {
+            new CSVWriter().writerOrderedLocationCapacity(capacity);
+        } catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Something went wrong while creating the writer!");
+        }
+    }
 
+    public void groupTeachersByStatus() {
+        for (Teacher teacher : teachers.values()) {
+            teacher.addMeToGroupedTeachers();
+        }
+    }
+}
 
 
 
@@ -189,15 +206,7 @@ public class School {
 
 
 
-    public void groupTeachersByStatus(){
-        for(Teacher teacher: teachers.values()){
-            teacher.addMeToGroupedTeachers();
-        }
 
-    }
-
-
-    }
 
   /*  public static int readGroup() {
         List<String> group = new CSVReader().readFile("Group");

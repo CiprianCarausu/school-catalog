@@ -1,5 +1,9 @@
 package Model;
-public class Location {
+
+import java.util.logging.Logger;
+
+
+public class Location implements Comparable {
 
     private String name;
     private int capacity;
@@ -60,6 +64,7 @@ public class Location {
         return available;
     }
 
+
     public String getAddress() {
         return address;
     }
@@ -83,5 +88,17 @@ public class Location {
 
     public String toCSVFileSave() {
         return name + "," + capacity + "," + available + "," + address + "\n";
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Location other = (Location) o;
+        if (capacity > ((Location) o).getCapacity()) {
+            return 1;
+        } else if (capacity == ((Location) o).getCapacity()) {
+            return 0;
+        } else {
+            return -1;
+        }
     }
 }

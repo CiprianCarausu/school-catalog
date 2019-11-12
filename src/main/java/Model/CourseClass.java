@@ -27,11 +27,7 @@ public class CourseClass {
 
     @Override
     public String toString() {
-        return "Schedule{" +
-                "idGroup=" + group +
-                ", teacher=" + teacher +
-                ", appointment=" + appointment +
-                ", course=" + course +
-                '}';
+        return String.format("{course={0}, group={1}, teacher={2}, appointment={3}",
+                course, group, teacher, appointment);
     }
 }

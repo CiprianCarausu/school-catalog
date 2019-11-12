@@ -4,7 +4,9 @@ package Controller;
 import IO.CSVReader;
 import IO.CSVWriter;
 import Model.*;
+import Util.DateTimeConverter;
 
+import javax.xml.crypto.dsig.spec.XSLTTransformParameterSpec;
 import java.io.IOException;
 import java.util.*;
 
@@ -102,10 +104,18 @@ public class School {
     public void loadMessages() {
         List<String> group = new CSVReader().readFile("Message");
         for (String line : group) {
-            Message tempMessage = new Message();
-            tempMessage.loadDataFromCSVString(line);
+            Message tempMessage = convertMessageFromCSV(line);
             messages.put(tempMessage.getGroupId(), tempMessage);
         }
+    }
+
+    private Message convertMessageFromCSV(String line){
+        String[] columns = line.split(",");
+        int groupId = Integer.parseInt(columns[3]);
+        Date dateTime = DateTimeConverter.stringToDateAndTime(columns[1]);
+        String content = columns[2];
+
+        return new Message(groupId, dateTime, content, new ArrayList<>());
     }
 
     public void loadTeachers() {

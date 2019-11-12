@@ -7,28 +7,28 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class Student implements Comparable{
+public class Student implements Comparable<Student>{
+    private int groupId;
     private String firstName;
     private String lastName;
     private String email;
     private Date birthDate;
     private String phoneNumber;
-    private int groupId;
     private int studentNumber;
     private List<String> messagesIds;
     private List<Message> messages = new ArrayList<>();
 
-    public Student(String firstName, String lastName, String email, Date birthDate, String phoneNumber, int group) {
+    public Student(String firstName, String lastName, String email,
+                   Date birthDate, String phoneNumber, int groupId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = checkEmail(email);
         this.birthDate = birthDate;
         this.phoneNumber = checkPhone(phoneNumber);
-        this.groupId = checkGroup(group);
+        this.groupId = checkGroup(groupId);
     }
 
-    public Student() {
-    }
+    public Student() { }
 
     public void loadDataFromCSVString(String line) {
         String[] columns = line.split(",");
@@ -40,6 +40,10 @@ public class Student implements Comparable{
         this.phoneNumber = columns[5];
         this.groupId = Integer.parseInt(columns[6]);
         this.messagesIds = Arrays.asList(columns[7].split("/"));
+    }
+
+    public String toCSVFileSave() {
+        return firstName + "," + lastName + "," + email + "," + birthDate + "," + phoneNumber+ "," + groupId+"\n";
     }
 
     public String checkPhone(String phoneNumber) {
@@ -84,7 +88,6 @@ public class Student implements Comparable{
     public void setLastName(String lastName) {
         if (lastName != null && !"".equals(lastName)) {
             this.lastName = lastName;
-
         }
     }
 
@@ -103,8 +106,6 @@ public class Student implements Comparable{
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public void setGroupId(int groupId) { this.groupId = groupId;}
 
     public String checkEmail(String email) {
         if (email != "[_a-zA-Z1-9]+(\\.[A-Za-z0-9]*)*@[A-Za-z0-9]+\\.[A-Za-z0-9]+(\\.[A-Za-z0-9]*)*") {
@@ -128,19 +129,8 @@ public class Student implements Comparable{
         messages.add(message);
     }
 
-    /*public void loadDataFromCSVString(String line) {
-        String[] columns = line.split(",");
-        this.firstName = columns[0];
-        this.birthDate = DateTimeConverter.stringToDateAndTime(columns[3]);
-    }*/
-    public String toCSVFileSave() {
-        return firstName + "," + lastName + "," + email + "," + birthDate + "," + phoneNumber+ "," + groupId+"\n";
-    }
-
-
     @Override
-    public int compareTo(Object o) {
-Student other = (Student) o;
-        return birthDate.compareTo(other.birthDate);
+    public int compareTo(Student o) {
+        return birthDate.compareTo(o.birthDate);
     }
 }

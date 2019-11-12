@@ -21,7 +21,7 @@ public class CSVWriter {
         writer = new FileWriter("src/main/resources"+fileName);
         writer.append("dateAndTime, message\n");
         for(Message message: messages){
-            writer.append(message.singeGroupFileSave());
+            writer.append(message.getDateTime() + "," + message.getContent() + "\n");
         }
         writeWriter();
     }

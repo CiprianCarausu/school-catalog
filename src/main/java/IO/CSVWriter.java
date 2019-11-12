@@ -31,9 +31,16 @@ public class CSVWriter {
         writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
         writer.append("name,capacity,available,address\n");
         for(Location loc: availables){
-            writer.append(loc.toCSVFileSave());
+            writer.append(convertLocationToCSV(loc));
         }
         writeWriter();
+    }
+
+    private String convertLocationToCSV(Location l){
+        return l.getName() + "," +
+                l.getCapacity() + "," +
+                l.isAvailable() + "," +
+                l.getAddress() + "\n";
     }
 
     public void writeOrderedStudents(List<Student> students) throws IOException{
@@ -73,7 +80,7 @@ public class CSVWriter {
         writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
         writer.append("name + capacity + available + address \n");
         for(Location loc : capacity){
-            writer.append(loc.toCSVFileSave());
+            writer.append(convertLocationToCSV(loc));
         }
         writeWriter();
     }

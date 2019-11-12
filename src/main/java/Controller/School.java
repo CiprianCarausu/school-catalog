@@ -120,10 +120,20 @@ public class School {
     public void loadLocations() {
         List<String> group = new CSVReader().readFile("Location");
         for (String line : group) {
-            Location tempLocation = new Location();
-            tempLocation.loadDataFromCSVString(line);
+            Location tempLocation = convertCsvToLocation(line);
             locations.put(tempLocation.getName(), tempLocation);
         }
+    }
+
+    private Location convertCsvToLocation(String line)
+    {
+        String[] columns = line.split(",");
+        String name = columns[0];
+        int capacity = Integer.parseInt(columns[1]);
+        boolean isAvailable = Boolean.parseBoolean(columns[2]);
+        String address = columns[3];
+
+        return new Location(name, capacity, isAvailable, address);
     }
 
     public void saveAllMessagesAGroup() {

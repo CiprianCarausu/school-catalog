@@ -1,34 +1,41 @@
 package Model;
 
-import java.util.logging.Logger;
-
-
-public class Location implements Comparable {
+public class Location implements Comparable<Location> {
 
     private String name;
     private int capacity;
-    private boolean available;
+    private boolean isAvailable;
     private String address;
 
-    public Location(String name, int capacity, boolean available, String address) {
+    public Location(String name, int capacity, boolean isAvailable, String address) {
         this.name = name;
         this.capacity = capacity;
-        this.available = available;
+        this.isAvailable = isAvailable;
         this.address = address;
         checkForName();
         checkForCapacity();
         checkForAdress();
     }
 
-    public Location() {
+    public String getName() {
+        return name;
     }
 
-    public void loadDataFromCSVString(String line) {
-        String[] columns = line.split(",");
-        this.name = columns[0];
-        this.capacity = Integer.parseInt(columns[1]);
-        this.available = Boolean.parseBoolean(columns[2]);
-        this.address = columns[3];
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    @Override
+    public int compareTo(Location o) {
+        return this.capacity - o.capacity;
     }
 
     private void checkForName() {
@@ -49,56 +56,6 @@ public class Location implements Comparable {
     private void checkForAdress() {
         if ("".equals(address)) {
             throw new IllegalArgumentException("Please complete Adress section");
-        }
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
-
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-
-    public String toCSVFileSave() {
-        return name + "," + capacity + "," + available + "," + address + "\n";
-    }
-
-    @Override
-    public int compareTo(Object o) {
-        Location other = (Location) o;
-        if (capacity > ((Location) o).getCapacity()) {
-            return 1;
-        } else if (capacity == ((Location) o).getCapacity()) {
-            return 0;
-        } else {
-            return -1;
         }
     }
 }

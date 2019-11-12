@@ -48,12 +48,6 @@ public class Group implements Comparable<Group>  {
         return this.groupId - o.groupId;
     }
 
-    @Override
-    public boolean equals(Object o)
-    {
-        return false;
-    }
-
     private int checkForIdGroupRange(int idGroup) {
         if (idGroup < 1 || idGroup > 10) {
             throw new IllegalArgumentException("The group doesn't exist.");

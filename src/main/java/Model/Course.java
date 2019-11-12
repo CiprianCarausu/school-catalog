@@ -1,12 +1,12 @@
 package Model;
 
-public class Courses {
+public class Course {
    private String name;
    private String abbreviation;
    private String details;
    private Teacher teachers;
 
-    public Courses(){
+    public Course(){
 
        /* public Courses(String name, String abbreviation, String details, Teacher teachers){
             this.name = name;
@@ -50,7 +50,7 @@ public class Courses {
 
     @Override
     public String toString() {
-        return "Courses{" +
+        return "Course{" +
                 "name='" + name + '\'' +
                 ", abbreviation='" + abbreviation + '\'' +
                 ", details='" + details + '\'' +

@@ -47,14 +47,25 @@ public class CSVWriter {
     }
 
     public void writerListGroupStudents(List<Group> students) throws IOException{
-        for(Group stu : students){
-            String fileName = "ListGroupStudents" + stu.getIdGroup();
+        for(Group group : students){
+            String fileName = "ListGroupStudents" + group.getGroupId();
             writer = new FileWriter("C:\\Users\\ccipy\\java_firstapp_maven" + "\\out\\" +fileName);
             writer.append("idGroup + year + student\n");
-            writer.append(stu.toCSVFileSave());
+            writer.append(convertGroupToCSV(group));
             writeWriter();
         }
 
+    }
+
+    private String convertGroupToCSV(Group group)
+    {
+        String result = "";
+
+        for (Student student:group.getStudents() ) {
+            result += group.getGroupId() + "," + group.getYear() + "," + student.getFirstName() ;
+        }
+
+        return result;
     }
 
     public void writerOrderedLocationCapacity(List<Location> capacity) throws IOException{

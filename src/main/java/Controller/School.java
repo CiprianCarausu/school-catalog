@@ -34,7 +34,7 @@ public class School {
     public int countEveryStudent() {
         int numberOfStudents = 0;
         for (Group group : groups.values()) {
-            numberOfStudents += group.countStudents();
+            numberOfStudents += group.getStudentsCount();
         }
         return numberOfStudents;
     }
@@ -66,10 +66,18 @@ public class School {
     public void loadGroups() {
         List<String> group = new CSVReader().readFile("Group");
         for (String line : group) {
-            Group tempGroup = new Group();
-            tempGroup.loadDataFromCSVString(line);
-            groups.put(tempGroup.getIdGroup(), tempGroup);
+            Group tempGroup = getGroupFromCSV(line);
+            groups.put(tempGroup.getGroupId(), tempGroup);
         }
+    }
+
+    private Group getGroupFromCSV(String csvGroup)
+    {
+        String[] columns = csvGroup.split(",");
+        int groupId = Integer.parseInt(columns[0]);
+        int year = Integer.parseInt(columns[1]);
+
+        return new Group(groupId, year, new ArrayList<>(), new ArrayList<>());
     }
 
     public List<Student> getStudents() {
@@ -120,7 +128,19 @@ public class School {
 
     public void saveAllMessagesAGroup() {
         for (Group group : groups.values()) {
-            group.saveMessagesOnTimeOrder();
+            saveGroupMessages(group);
+        }
+    }
+
+    private void saveGroupMessages(Group group)
+    {
+        List<Message> messages = group.getMessages();
+        Collections.sort(messages);
+        try {
+            new CSVWriter().writeMessagesToFile(group.getGroupId(), messages);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Something went wrong while creating a csv filewriter file!");
         }
     }
 
